@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CEPEM</title>
+  <link rel="icon" type="image/x-icon" href="icone_cepem.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary: #00b6e6; /* cor semelhante ao "M" do logo */
+      --dark: #0b0b0b;
+    }
+
+    html,body{
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:var(--dark);
+    }
+
+    h1,h2,h3,h4,h5{font-family: 'Poppins', 'Inter', sans-serif; color:var(--dark);}
+
+/* mantém o cabeçalho com altura fixa e centraliza conteúdo */
+.navbar {
+  background: transparent;
+  height: 72px;             /* altura fixa do cabeçalho (ajuste se quiser) */
+  min-height: 72px;
+}
+.navbar .container {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-brand img {
+  height: 220px;            
+  max-height: 220px;
+  display: block;
+  object-fit: contain;
+}
+
+
+@media (max-width: 576px) {
+  .navbar {
+    height: 64px;
+    min-height: 64px;
+  }
+  .navbar .container { height: 64px; }
+  .navbar-brand img { height: 56px; max-height:56px; }
+
+  .nav{
+    background: #ffffff !important;
+    width: 100%;
+  }
+}
+
+    .nav-link{color:rgba(0,0,0,0.75); font-weight:600}
+    .nav-link:hover{color:var(--primary)}
+
+    /* Hero */
+    #hero{background:linear-gradient(180deg, rgba(0,182,230,0.06), transparent);}
+    #hero h1{font-size:2.6rem; letter-spacing:1px; color:var(--dark); font-weight:700}
+    #hero .lead{font-size:1.05rem; color:rgba(0,0,0,0.7)}
+
+    /* Buttons */
+    .btn-primary{background:var(--primary); border-color:var(--primary);}
+    .btn-primary:hover{background:#00a6cc; border-color:#00a6cc}
+
+    /* Cards */
+    .card .fw-bold{color:var(--primary)}
+    .card{border:0}
+
+    /* Carousel captions */
+    .carousel-caption{left:1rem; right:1rem; bottom:1rem}
+
+    /* Footer */
+    footer{background:#04202b}
+    footer p{color:rgba(255,255,255,0.9); margin:0}
+
+    /* Stars (usar a cor primária) */
+    .rating { color: yellow; font-size:1.05rem; }
+
+    /* Unidades grid center adjustments */
+    @media(min-width:768px){
+      .mx-md-auto{margin-left:auto; margin-right:auto}
+    }
+    .carousel-item img {
+height: 500px; /* ajuste fino da altura desejada */
+object-fit: cover; /* mantém cortes suaves e qualidade visual */
+width: 100%;
+}
+
+
+@media (max-width: 768px) {
+.carousel-item img {
+height: 260px; /* menor altura no mobile */
+}
+}
+
+.navbar-collapse {
+display: none !important;
+}
+.navbar-collapse.collapse.show {
+display: block !important; /* menu passa a empurrar conteúdo */
+}
+#nav .nav-link {
+padding: 0.6rem 1rem;
+}
+
+.navbar .container { height: 64px; }
+.navbar-brand img { height: 56px; max-height:56px; }
+
+
+/* mobile: make collapsed menu push content instead of overlapping; keep original toggler */
+.navbar .container { flex-wrap: wrap; }
+.navbar-collapse {
+position: static !important;
+width: 100%;
+background: #ffffff; /* keep same look */
+}
+.navbar-collapse.collapse { display: none !important; }
+.navbar-collapse.collapse.show { display: block !important; }
+/* touch-friendly spacing for items */
+#nav .nav-link { padding: 0.6rem 1rem; font-size: 1.05rem; }
+
+.navbar .container { height: 64px; }
+.navbar-brand img { height: 56px; max-height:56px; }
+
+
+/* mobile: make collapse push page content instead of overlapping */
+.navbar .container { flex-wrap: wrap; }
+.navbar-collapse {
+position: static !important;
+width: 100%;
+}
+.navbar-collapse.collapse {
+display: none !important;
+}
+.navbar-collapse.collapse.show {
+display: block !important;
+}
+/* ensure collapsed menu sits below header and doesn't overlap content */
+.navbar + section, .navbar + div, .navbar + header {
+margin-top: 0; /* keep as-is; collapse will push content */
+}
+/* slightly larger, touch-friendly links */
+#nav .nav-link { padding: 0.6rem 1rem; font-size: 1.05rem; }
+
+.navbar { position: relative; }
+.collapse { position: static !important; width: 100%; }
+.collapse.show { display: block !important; }
+nav .collapse { box-shadow: none; }
+.navbar-nav { display: block; }
+.navbar-nav .nav-link { display:block; padding:0.6rem 1rem; }
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="Design sem nome (2).png" alt="CEPEM" height="50"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pos">Pós-graduações</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#unidades">Unidades e Contatos</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Sobre -->
+  <section id="hero" class="py-5 bg-light text-center">
+    <div class="container">
+      <h2 class="mb-3">Quem Somos?</h2>
+      <p>O CEPEM é uma instituição especializada em educação na área da saúde, oferecendo cursos técnicos, capacitações, pós-graduações e residências. Atua há anos formando profissionais capacitados com foco em prática, excelência acadêmica e atualização constante.</p>
+    </div>
+  </section>
+
+  <!-- Pós-graduações -->
+  <section id="pos" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-3">Pós-graduações</h2>
+
+      <!-- Carousel de Pós-graduações -->
+      <div id="posCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner rounded shadow-sm">
+          <div class="carousel-item active">
+            <img src="dermatologista.jpg" class="d-block w-100" alt="Aulas práticas e simulações">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Cosmetologia e Estética Avançada</h5>
+              <p>Harmonização Glútea • Harmonização Facial (Residência)</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="emergencia.jpg" class="d-block w-100" alt="Treinamento em UTI e urgência">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Urgência, Emergência e UTI</h5>
+              <p>Enfermagem em Nefrologia • Cardiologia Hemodinâmica</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="enfermeira.jpg" class="d-block w-100" alt="Atendimento dermatológico e estético">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Enfermagem Dermatológica</h5>
+              <p>Atendimento dermatológico e estético</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="obstetra.jpg" class="d-block w-100" alt="Ginecologia e Obstetrícia">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Ginecologia e Obstetrícia</h5>
+              <p>Acompanhamento Ginecológico Obstétrico</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="dermatologista2.jpg" class="d-block w-100" alt="Procedimentos estéticos e práticas">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Formação e Prática Avançada</h5>
+              <p>Conteúdo prático, corpo docente qualificado e material atualizado.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#posCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#posCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Cursos -->
+  <section id="cursos" class="py-5">
+    <div class="container">
+      <h2 class="mb-3">Cursos</h2>
+
+      <div id="cursosCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner rounded shadow-sm">
+          <div class="carousel-item">
+            <img src="harmonizacao-facial.jpg" class="d-block w-100" alt="Harmonização Facial">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Curso de Residência em Harmonização Facial</h5>
+              <p>Imersão prática e aperfeiçoamento contínuo.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="dentista.jpg" class="d-block w-100" alt="Auxiliar em Saúde Bucal">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Auxiliar em Saúde Bucal</h5>
+              <p>Formação completa para atuação profissional.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item active">
+            <img src="harmizacao-gluteo.jpg" class="d-block w-100" alt="Harmonização Glútea">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Curso de Harmonização Glútea</h5>
+              <p>Técnicas atualizadas e prática supervisionada.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="enfermagem2.jpg" class="d-block w-100" alt="Curso Técnico em Enfermagem">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Curso Técnico em Enfermagem</h5>
+              <p>Base sólida e prática de campo.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="protese_dent.jpg" class="d-block w-100" alt="Prótese Dentária">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Curso Técnico em Prótese Dentária</h5>
+              <p>Laboratório equipado e metodologia prática.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#cursosCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#cursosCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos (carrossel 3 por slide) -->
+  <section id="depoimentos" class="py-5">
+    <div class="container">
+      <h2 class="mb-3">Depoimentos</h2>
+
+      <div id="depoCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+          <!-- SLIDE 1 -->
+          <div class="carousel-item active">
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Funcionários qualificados, tudo de bom!”</p>
+                    <h6 class="fw-bold">– Bárbara Batista</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Muito boa, super indico!”</p>
+                    <h6 class="fw-bold">– Maria Valdene Souza</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Cursos excelentes, adorei.”</p>
+                    <h6 class="fw-bold">– Lúcia Maria</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2 -->
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Conteúdo atualizado e prático.”</p>
+                    <h6 class="fw-bold">– João Pedro Albuquerque</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Excelente instituição!”</p>
+                    <h6 class="fw-bold">– Ana Cláudia Ferreira</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Acompanhamento impecável.”</p>
+                    <h6 class="fw-bold">– Rafaela Moura</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 -->
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Didática maravilhosa.”</p>
+                    <h6 class="fw-bold">– Caroline Santos</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Ambiente ótimo para estudar.”</p>
+                    <h6 class="fw-bold">– Viviane Cruz</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <p>“Recomendo demais.”</p>
+                    <h6 class="fw-bold">– Eduardo Silva</h6>
+                    <div class="rating">★★★★★</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#depoCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#depoCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unidades -->
+  <section id="unidades" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-3">Unidades e Contatos</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm rounded h-100">
+            <h5>Maceió – AL (Sede)</h5>
+            <p>Avenida Comendador Gustavo Paiva, 2789, Sala 21 (Térreo), Norcon Empresarial, Mangabeiras, CEP 57037-532<br>
+            WhatsApp: (82) 9917-2217<br>
+            Instagram: @cepemnordeste<br>
+            Horário de funcionamento: Segunda a Sexta, 08h às 17h</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm rounded h-100">
+            <h5>Serra Talhada – PE</h5>
+            <p>Av. João Gomes de Lucena, 4361, São Cristóvão, CEP 56903-000<br>
+            WhatsApp: (87) 9632-4059<br>
+            Instagram: @cepemserra<br>
+            Horário de funcionamento: Segunda a Sexta, 08h às 17h</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 mx-md-auto">
+          <div class="p-3 bg-white shadow-sm rounded h-100">
+            <h5>Caruaru – PE</h5>
+            <p>Caruaru Shopping – Hub Plural, Av. Adjar da Silva Casé, 1º andar, Indianópolis<br>
+            WhatsApp: (81) 9918-0363<br>
+            Instagram: @cepemnordeste<br>
+            Horário de funcionamento: Segunda a Sexta, 08h às 17h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="py-4 bg-dark text-white text-center">
+    <p>CEPEM – Centro de Ensino e Pesquisa em Emergências Médicas LTDA<br>
+    CNPJ: 30.977.239/0001-87</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
