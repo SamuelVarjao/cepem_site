@@ -43,11 +43,30 @@
 
 @media (max-width: 576px) {
   .navbar {
-    height: 64px;
-    min-height: 64px;
+    height: 95px;
+    min-height: 95px;
   }
-  .navbar .container { height: 64px; }
-  .navbar-brand img { height: 56px; max-height:56px; }
+  .navbar .container { height: 95px; }
+
+    .navbar .container {
+    justify-content: space-between;   /* deixa logo esquerda / menu direita */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Garante alinhamento vertical entre logo e botão */
+  .navbar-brand img {
+    height: 80px !important;
+    max-height: 80px !important;
+    margin-bottom: 20px;
+  }
+
+  /* Toggler mais alinhado e com clique confortável */
+  .navbar-toggler {
+    padding: 0.35rem 0.55rem;
+    margin-bottom: 20px;
+
+  }
 
   .nav{
     background: #ffffff !important;
@@ -107,9 +126,7 @@ display: block !important; /* menu passa a empurrar conteúdo */
 #nav .nav-link {
 padding: 0.6rem 1rem;
 }
-@media (max-width: 576px) {
-.navbar .container { height: 64px; }
-.navbar-brand img { height: 56px; max-height:56px; }
+@media (max-width: 576px){
 
 
 /* mobile: make collapsed menu push content instead of overlapping; keep original toggler */
@@ -124,8 +141,6 @@ background: #ffffff; /* keep same look */
 /* touch-friendly spacing for items */
 #nav .nav-link { padding: 0.6rem 1rem; font-size: 1.05rem; }
 
-.navbar .container { height: 64px; }
-.navbar-brand img { height: 56px; max-height:56px; }
 
 
 /* mobile: make collapse push page content instead of overlapping */
@@ -140,10 +155,7 @@ display: none !important;
 .navbar-collapse.collapse.show {
 display: block !important;
 }
-/* ensure collapsed menu sits below header and doesn't overlap content */
-.navbar + section, .navbar + div, .navbar + header {
-margin-top: 0; /* keep as-is; collapse will push content */
-}
+
 /* slightly larger, touch-friendly links */
 #nav .nav-link { padding: 0.6rem 1rem; font-size: 1.05rem; }
 
@@ -154,6 +166,23 @@ nav .collapse { box-shadow: none; }
 .navbar-nav { display: block; }
 .navbar-nav .nav-link { display:block; padding:0.6rem 1rem; }
 }
+
+@media (max-width: 576px) {
+
+  /* Legendas menores no mobile */
+  .carousel-caption h5 {
+    font-size: 1rem;       /* título menor */
+  }
+  .carousel-caption p {
+    font-size: 0.8rem;     /* descrição menor */
+    margin-top: 0.25rem;
+  }
+  .carousel-caption {
+    padding: 0.35rem 0.6rem; /* legenda mais compacta */
+  }
+
+}
+
   </style>
 </head>
 <body>
@@ -195,7 +224,7 @@ nav .collapse { box-shadow: none; }
         <div class="carousel-inner rounded shadow-sm">
           <div class="carousel-item active">
             <img src="dermatologista.jpg" class="d-block w-100" alt="Aulas práticas e simulações">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Cosmetologia e Estética Avançada</h5>
               <p>Harmonização Glútea • Harmonização Facial (Residência)</p>
             </div>
@@ -203,7 +232,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item">
             <img src="emergencia.jpg" class="d-block w-100" alt="Treinamento em UTI e urgência">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Urgência, Emergência e UTI</h5>
               <p>Enfermagem em Nefrologia • Cardiologia Hemodinâmica</p>
             </div>
@@ -211,7 +240,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item">
             <img src="enfermeira.jpg" class="d-block w-100" alt="Atendimento dermatológico e estético">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Enfermagem Dermatológica</h5>
               <p>Atendimento dermatológico e estético</p>
             </div>
@@ -219,7 +248,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item">
             <img src="obstetra.jpg" class="d-block w-100" alt="Ginecologia e Obstetrícia">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Ginecologia e Obstetrícia</h5>
               <p>Acompanhamento Ginecológico Obstétrico</p>
             </div>
@@ -227,7 +256,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item">
             <img src="dermatologista2.jpg" class="d-block w-100" alt="Procedimentos estéticos e práticas">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Formação e Prática Avançada</h5>
               <p>Conteúdo prático, corpo docente qualificado e material atualizado.</p>
             </div>
@@ -256,7 +285,7 @@ nav .collapse { box-shadow: none; }
         <div class="carousel-inner rounded shadow-sm">
           <div class="carousel-item">
             <img src="harmonizacao-facial.jpg" class="d-block w-100" alt="Harmonização Facial">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Curso de Residência em Harmonização Facial</h5>
               <p>Imersão prática e aperfeiçoamento contínuo.</p>
             </div>
@@ -264,7 +293,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item">
             <img src="dentista.jpg" class="d-block w-100" alt="Auxiliar em Saúde Bucal">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Auxiliar em Saúde Bucal</h5>
               <p>Formação completa para atuação profissional.</p>
             </div>
@@ -272,7 +301,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item active">
             <img src="harmizacao-gluteo.jpg" class="d-block w-100" alt="Harmonização Glútea">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Curso de Harmonização Glútea</h5>
               <p>Técnicas atualizadas e prática supervisionada.</p>
             </div>
@@ -280,7 +309,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item">
             <img src="enfermagem2.jpg" class="d-block w-100" alt="Curso Técnico em Enfermagem">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Curso Técnico em Enfermagem</h5>
               <p>Base sólida e prática de campo.</p>
             </div>
@@ -288,7 +317,7 @@ nav .collapse { box-shadow: none; }
 
           <div class="carousel-item">
             <img src="protese_dent.jpg" class="d-block w-100" alt="Prótese Dentária">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+            <div class="carousel-caption d-block d-md-block bg-dark bg-opacity-50 rounded p-2">
               <h5>Curso Técnico em Prótese Dentária</h5>
               <p>Laboratório equipado e metodologia prática.</p>
             </div>
@@ -483,4 +512,3 @@ nav .collapse { box-shadow: none; }
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
